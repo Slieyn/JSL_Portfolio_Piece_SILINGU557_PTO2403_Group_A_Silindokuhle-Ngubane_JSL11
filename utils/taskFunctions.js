@@ -20,6 +20,8 @@ export const createNewTask = (task) => {
 };
 
 
+
+
 export const patchTask = (id, updates) => {
   const tasks = getTasks();
   const taskIndex = tasks.findIndex(task => task.id === id);
@@ -28,6 +30,9 @@ export const patchTask = (id, updates) => {
       saveTasks(tasks);
       // Previously: location.reload(); Now: We'll refresh the UI instead.
   }
+
+ refreshTasksUI();
+ 
   return tasks; // Optionally return the updated tasks list for further processing
 };
 
