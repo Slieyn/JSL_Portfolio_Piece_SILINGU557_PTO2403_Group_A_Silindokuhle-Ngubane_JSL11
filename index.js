@@ -239,8 +239,8 @@ function addTask(event) {
 
 
 function toggleSidebar(show) {
- const sidebar = document.getElementById('sidebar');
- sidebar.style.display = show ? 'block' : 'none';
+  const sidebar = document.getElementById('side-bar-div');
+  sidebar.style.display = show ? 'block' : 'none';
 }
 
 function toggleTheme() {
@@ -307,4 +307,3 @@ function init() {
   document.body.classList.toggle('light-theme', isLightTheme);
   fetchAndDisplayBoardsAndTasks(); // Initial display of boards and tasks
 }
-
