@@ -1,5 +1,5 @@
 // TASK: import helper functions from utils
-import { getTasks, deleteTask, } from './utils/taskFunctions.js';
+import { createNewTask,getTasks,deleteTask, } from './utils/taskFunctions.js';
 
 // TASK: import initialData
 import { initialData} from './initialData.js';
@@ -27,6 +27,18 @@ function initializeData() {
 
 // TASK: Get elements from the DOM
 const elements = {
+ addNewTaskBtn: document.getElementById('add-new-task-btn'),
+ modalWindow: document.getElementById('new-task-modal-window'),
+ titleInput:document.getElementById('title-input'),
+ descInput : document.getElementById('desc-input'),
+ selectStatus : document.getElementById('select-status'),
+ columnDivs: document.querySelectorAll('column-div'),
+ editBtn: document.getElementById('edit-btn'),
+ editTaskDivButtonGroup: document.getElementById('save-task-changes-btn'),
+ editTaskDivButtonGroup: document.getElementById('cancel-edit-btn'),
+ editTaskDivButtonGroup: document.getElementById('delete-task-btn'),
+ 
+  container: document.getElementById('task-form'),
   layout: document.getElementById('header-board-name'),
   filterDiv: document.getElementById('filterDiv'),
   sideBar: document.getElementById('side-bar'),
@@ -38,18 +50,29 @@ const elements = {
   hideSideBarBtn: document.getElementById('hide-side-bar-btn'),
   showSideBarBtn: document.getElementById('show-side-bar-btn'),
   createNewTaskBtn: document.getElementById('create-task-btn'),
-  addNewTaskBtn: document.getElementById('add-new-task-btn'),
   themeSwitch: document.getElementById('switch'),
   labelCheck: document.getElementById('label-check-box-theme'),
-  modalWindow: document.getElementById('new-task-modal-window'),
   openEditTaskModal: document.getElementById('edit-task-modal-window'),
   labelModalWindow: document.getElementById('modal-title-input'),
-  titleInput: document.getElementById('title-input'),
-  descInput : document.getElementById('desc-input'),
-  status: document.getElementById('select-status'),
   
 }
+elements.addNewTaskBtn.addEventListener('click', (event) =>{ 
+  elements.modalWindow.style.display = 'flex';
+  event.preventDefault();
+  console.log(elements.titleInput.value)
+  console.log(elements.descInput.value)
+  console.log(elements.selectStatus.value)
 
+  elements.editTaskDivButtonGroup.addEventListener('click', (event) =>{ 
+    elements.editBtn.style.display = 'flex';
+    event.preventDefault();
+    console.log(elements.saveTaskChangesBtn.value)
+    console.log(elements.cancelEditBtn.value)
+    console.log(elements.delete-task-btn.value)
+
+  }) 
+
+})
 let activeBoard = "";
 
 // Extracts unique board names from tasks
@@ -97,6 +120,7 @@ function filterAndDisplayTasksByBoard(boardName) {
   // Ensure the column titles are set outside of this function or correctly initialized before this function runs
 
   elements.columnDivs.forEach(column => {
+    console.log(column)
     const status = column.getAttribute("data-status");
     // Reset column content while preserving the column title
     column.innerHTML = `<div class="column-head-div">
@@ -146,7 +170,10 @@ function styleActiveBoard(boardName) {
 
 
 function addTaskToUI(task) {
-  const column = document.querySelector('.column-div[data-status="${task.status}"]'); 
+  const column = document.querySelector(`[data-status="${task.status}"]`); 
+  console.log(`[data-status="${task.status}"]`)
+  console.log(column) 
+  console.log(task.status)
   if (!column) {
     console.error(`Column not found for status: ${task.status}`);
     return;
@@ -221,9 +248,12 @@ function addTask(event) {
   event.preventDefault(); 
 
   //Assign user input to the task object
+
+ 
     const task = {
-      title: document.getElementById('task-title').Value,
-      status: document.getElementById('task-status').Value,
+      title: elements.titleInput.value,
+      status: elements.selectStatus.value,
+      desc: elements.descInput.value,
       board: activeBoard,
       id: Date.now(),
     };

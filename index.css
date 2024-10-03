@@ -249,9 +249,16 @@ header {
   /* border: 5px solid rgb(170, 211, 58); */
   padding-top: 130px;
   padding-left: 35px;
+  max-width: 1200px;
   max-height: auto;
+  margin: auto;
   overflow: auto;
+  text-align: center;
   box-sizing: border-box;
+}
+
+.form{
+content: hidden;
 }
 
 .card-column-main {
@@ -565,14 +572,12 @@ textarea#edit-task-desc.input.edit-task-description-input {
 
 .modal-window {
   border: 5px solid red;
-  display: flex;
   flex-direction: column;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 600px;
-  display: flex;
   flex-direction: column;
   padding: 30px;
   gap: 20px;
