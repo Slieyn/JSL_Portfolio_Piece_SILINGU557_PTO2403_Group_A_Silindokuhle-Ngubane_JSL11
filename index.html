@@ -177,7 +177,7 @@
     </form>
   
     <!-- Edit Task Modal: Form for editing an existing task's details. -->
-    <div class="edit-task-modal-window">
+    <div id="edit-task-modal-window">
       <form id="edit-task-form">
         <div class="edit-task-div" id="edit-task-header">
           <input
@@ -186,7 +186,7 @@
             class="task-title-input"
             placeholder="Task Title"
           />
-          <button id= "edit-btn" class="edit-btn"></button>
+          <button  id= "edit-btn" class="edit-btn"></button>
         </div>
         <div class="edit-task-div">
           <textarea
@@ -196,10 +196,10 @@
           ></textarea>
         </div>
         <div class="edit-task-div">
-          <label class="label-modal-window" for="edit-select-status"
+          <label class="label-modal-window" for="edit-task-status"
             >Current Status</label
           >
-          <select name="status" id="edit-select-status">
+          <select name="status" id="edit-task-status">
             <option value="todo">todo</option>
             <option value="doing">doing</option>
             <option value="done">done</option>

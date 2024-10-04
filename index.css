@@ -571,7 +571,7 @@ textarea#edit-task-desc.input.edit-task-description-input {
 }
 
 .modal-window {
-  border: 5px solid red;
+  border: 5px solid;
   flex-direction: column;
   position: fixed;
   top: 50%;

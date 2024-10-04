@@ -117,4 +117,4 @@ As you embark on implementing these features, remember the value of tackling the
 - **Removing Deleted Tasks from localStorage**: As a user, I want tasks that I delete to be removed from localStorage so that my task list remains accurate and up-to-date.
 
 link to the loom video
-https://www.loom.com/share/f0ec17b720744ef9948cc54883b8ab56?sid=7ec3db4d-1acc-4eab-be47-531e50efc2e7
+https://www.loom.com/share/8301e853bce746fb99562423ac896bcc?sid=a66aa171-8ff8-413e-a14c-fe0d19ada359
