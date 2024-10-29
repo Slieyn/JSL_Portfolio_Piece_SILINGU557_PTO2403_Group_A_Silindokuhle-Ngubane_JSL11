@@ -1,5 +1,7 @@
-//{ addTask, getTasks, updateTask, deleteTask, getTaskById } from './utils/taskFunction.js';
-
+// utils/taskFunction.js
+const refreshTaskUI = () => {
+  location.reload();
+};
 // Simulate fetching tasks from localStorage
 export const getTasks = () => {
   const tasks = localStorage.getItem("tasks");
@@ -25,10 +27,10 @@ export const patchTask = (id, updates) => {
   if (taskIndex > -1) {
     tasks[taskIndex] = { ...tasks[taskIndex], ...updates };
     saveTasks(tasks);
-    // Previously: location.reload(); Now: We'll refresh the UI instead.
-  }
 
-  refreshTasksUI();
+    // Previously: location.reload(); Now: We'll refresh the UI instead.
+    refreshTaskUI(id);
+  }
 
   return tasks; // Optionally return the updated tasks list for further processing
 };
@@ -46,7 +48,7 @@ export const putTask = (id, updatedTask) => {
 export const deleteTask = (id) => {
   const tasks = getTasks();
   const updatedTasks = tasks.filter((task) => task.id !== id);
-  saveTasks(updatedTask);
+  saveTasks(updatedTasks);
   // Previously: location.reload(); Now: We'll refresh the UI instead.
   return updatedTasks; // Optionally return the updated tasks list for further processing
 };
